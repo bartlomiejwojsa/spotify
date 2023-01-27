@@ -39,10 +39,6 @@ final class APICaller {
                 }
                 do {
                     let json = try JSONDecoder().decode(AlbumDetailsResponse.self, from: data)
-//                    let json = try JSONSerialization.jsonObject(
-//                        with: data,
-//                        options: .allowFragments
-//                    )
                     completion(.success(json))
                 } catch {
                     completion(.failure(error))

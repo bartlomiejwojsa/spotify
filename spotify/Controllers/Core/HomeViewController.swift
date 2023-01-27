@@ -163,6 +163,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // we have got 3 sections - new releases, featured playlists & recommended tracks
         return sections.count
     }
     
@@ -199,7 +200,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let vc = PlayerViewController(audio: track)
             vc.title = track.name
             vc.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(vc, animated: true)        }
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
@@ -241,7 +243,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(230)
+                    heightDimension: .absolute(260)
                 )
             )
             
@@ -251,7 +253,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let verticalGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(230)
+                    heightDimension: .absolute(260)
                 ),
                 repeatingSubitem: item,
                 count: 2
@@ -259,7 +261,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.45),
-                    heightDimension: .absolute(460)
+                    heightDimension: .absolute(520)
                 ),
                 repeatingSubitem: verticalGroup,
                 count: 1
@@ -270,16 +272,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return section
         case 2:
             // item
+            print("Lets generate section number 2 !")
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(80)
+                    heightDimension: .fractionalHeight(1.0)
                 )
             )
             
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-
-            let verticalGroup = NSCollectionLayoutGroup.vertical(
+            
+            let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
                     heightDimension: .absolute(80)
@@ -287,17 +290,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 repeatingSubitem: item,
                 count: 1
             )
-            let vert = NSCollectionLayoutGroup.vertical(
-                layoutSize: NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(800)
-                ),
-                repeatingSubitem: verticalGroup,
-                count: 1
-            )
-            // section
-            let section = NSCollectionLayoutSection(group: vert)
-            section.orthogonalScrollingBehavior = .continuous
+            let section = NSCollectionLayoutSection(group: group)
             return section
         default:
             // item

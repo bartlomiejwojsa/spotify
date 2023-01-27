@@ -7,12 +7,6 @@
 
 import UIKit
 import SDWebImage
-//struct NewReleasesCellViewModel {
-//    let name: String
-//    let artworkURL: URL?
-//    let numberOfTracks: Int
-//    let artistName: String
-//}
 
 class NewReleaseCollectionViewCell: UICollectionViewCell {
     static let identifier = "NewReleaseCollectionViewCell"
@@ -84,15 +78,12 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         // just to debug layouts size
 //        albumNameLabel.backgroundColor = .systemRed
 
-
-
         artistNameLabel.frame = CGRect(
             x: albumCoverImageView.right + 10,
             y: min(50, albumLabelSize.height) + 5,
             width: contentView.width - albumCoverImageView.right - 10,
             height: min(80, albumLabelSize.height)
         )
-//        artistNameLabel.backgroundColor = .systemRed
 
         numberOfTracksLabel.frame = CGRect(
             x: albumCoverImageView.right + 10,
@@ -100,7 +91,6 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
             width: contentView.width - albumCoverImageView.right - 10,
             height: 20
         )
-//        numberOfTracksLabel.backgroundColor = .systemRed
         
             
     }
