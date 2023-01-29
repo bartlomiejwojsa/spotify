@@ -10,6 +10,8 @@
 		124F3981DA42946F6D13E833 /* Pods_spotify_spotifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39468387E5D2A19D56703708 /* Pods_spotify_spotifyUITests.framework */; };
 		C4EAFAD47A8D42D1BC7B2DDF /* Pods_spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A985719EF6B9D336975C4E35 /* Pods_spotify.framework */; };
 		C9023799D6A53924F29236C8 /* Pods_spotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8447887FE444BE18C23655A9 /* Pods_spotifyTests.framework */; };
+		ED06D1B52986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06D1B42986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift */; };
+		ED06D1B7298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06D1B6298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift */; };
 		ED1817AC292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AB292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift */; };
 		ED1817AE292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AD292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift */; };
 		ED1817B0292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AF292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift */; };
@@ -82,6 +84,8 @@
 		8447887FE444BE18C23655A9 /* Pods_spotifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A985719EF6B9D336975C4E35 /* Pods_spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77F9E3AB056CA3A08FD9CEF /* Pods-spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotify.debug.xcconfig"; path = "Target Support Files/Pods-spotify/Pods-spotify.debug.xcconfig"; sourceTree = "<group>"; };
+		ED06D1B42986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		ED06D1B6298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderViewViewModel.swift; sourceTree = "<group>"; };
 		ED1817AB292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED1817AD292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED1817AF292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 			children = (
 				ED2B494C2925BE1A00FE6713 /* Browse */,
 				EDE02BDC29148FCF00E5AB3C /* Launch Screen.storyboard */,
+				ED06D1B42986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				ED2B4946292596D500FE6713 /* NewReleaseCellViewModel.swift */,
 				ED2B4948292597DE00FE6713 /* FeaturedPlaylistsCellViewModel.swift */,
 				ED2B494A2925BBC900FE6713 /* RecommendedTrackCellViewModel.swift */,
+				ED06D1B6298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				ED2B4947292596D500FE6713 /* NewReleaseCellViewModel.swift in Sources */,
 				ED2B494B2925BBC900FE6713 /* RecommendedTrackCellViewModel.swift in Sources */,
 				EDE02BE92914920F00E5AB3C /* WelcomeViewController.swift in Sources */,
+				ED06D1B7298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift in Sources */,
 				ED5BA04D292C5E00006C5351 /* AlbumViewController.swift in Sources */,
 				ED694F2329231A0700A569EC /* AvailableGenreSeedsResponse.swift in Sources */,
 				ED694F1F2923044500A569EC /* APIImage.swift in Sources */,
@@ -602,6 +609,7 @@
 				ED694F1D2923037800A569EC /* NewReleasesResponse.swift in Sources */,
 				ED1817AC292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift in Sources */,
 				EDE02BAB29148F2500E5AB3C /* HomeViewController.swift in Sources */,
+				ED06D1B52986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift in Sources */,
 				ED1817AE292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift in Sources */,
 				ED2F34AD2915CE620060230F /* AuthResponse.swift in Sources */,
 				EDE02BFE291494E700E5AB3C /* AudioTrack.swift in Sources */,
