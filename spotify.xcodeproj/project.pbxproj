@@ -12,6 +12,8 @@
 		C9023799D6A53924F29236C8 /* Pods_spotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8447887FE444BE18C23655A9 /* Pods_spotifyTests.framework */; };
 		ED06D1B52986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06D1B42986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift */; };
 		ED06D1B7298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06D1B6298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift */; };
+		ED06D1B92986128E00AAD2B0 /* AuthConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED06D1B82986128E00AAD2B0 /* AuthConfiguration.plist */; };
+		ED06D1BB2986177200AAD2B0 /* _example_AuthConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED06D1BA2986177200AAD2B0 /* _example_AuthConfiguration.plist */; };
 		ED1817AC292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AB292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift */; };
 		ED1817AE292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AD292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift */; };
 		ED1817B0292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1817AF292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift */; };
@@ -86,6 +88,8 @@
 		C77F9E3AB056CA3A08FD9CEF /* Pods-spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotify.debug.xcconfig"; path = "Target Support Files/Pods-spotify/Pods-spotify.debug.xcconfig"; sourceTree = "<group>"; };
 		ED06D1B42986057600AAD2B0 /* PlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		ED06D1B6298608E600AAD2B0 /* PlaylistHeaderViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderViewViewModel.swift; sourceTree = "<group>"; };
+		ED06D1B82986128E00AAD2B0 /* AuthConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfiguration.plist; sourceTree = "<group>"; };
+		ED06D1BA2986177200AAD2B0 /* _example_AuthConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = _example_AuthConfiguration.plist; sourceTree = "<group>"; };
 		ED1817AB292463AD00F5FE4C /* NewReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED1817AD292463C000F5FE4C /* FeaturedPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED1817AF292463CF00F5FE4C /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				EDE02BD729148F4E00E5AB3C /* View */,
 				EDE02BD629148F4400E5AB3C /* Controllers */,
 				EDE02BB429148F2600E5AB3C /* Info.plist */,
+				ED06D1B82986128E00AAD2B0 /* AuthConfiguration.plist */,
+				ED06D1BA2986177200AAD2B0 /* _example_AuthConfiguration.plist */,
 			);
 			path = spotify;
 			sourceTree = "<group>";
@@ -456,6 +462,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED06D1BB2986177200AAD2B0 /* _example_AuthConfiguration.plist in Resources */,
+				ED06D1B92986128E00AAD2B0 /* AuthConfiguration.plist in Resources */,
 				EDE02BDD29148FCF00E5AB3C /* Launch Screen.storyboard in Resources */,
 				EDE02BB029148F2600E5AB3C /* Assets.xcassets in Resources */,
 			);

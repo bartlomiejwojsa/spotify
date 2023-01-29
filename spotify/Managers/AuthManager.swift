@@ -9,31 +9,69 @@ import Foundation
 
 // make sure user is signed in and stuff..
 
+struct AuthConfig {
+    var clientID: String?
+    var clientSecret: String?
+}
+
 final class AuthManager {
     static let shared = AuthManager()
     
     private var refreshingToken = false
-    
+    private var clientID: String = ""
+    private var clientSecret: String = ""
+
     struct Constants {
-        static let clientID = "a4055a50f1604314874d78f3b7da87fc"
-        static let clientSecret = "869d0554e1864fa4a61639359ba08726"
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
         static let redirectURI = "https://www.iosacademy.io/"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
     
     private init() {
+        print("HELLO?")
+        let configuration = getConfiguration()
+        guard let safeClientID = configuration?.clientID, let safeClientSecret = configuration?.clientSecret else {
+            return
+        }
+        self.clientID = safeClientID
+        self.clientSecret = safeClientSecret
+    }
+    
+    private func getConfiguration() -> AuthConfig? {
+        guard let path = Bundle.main.path(forResource: "AuthConfiguration", ofType: "plist") else {
+            return nil
+        }
+        print(path)
+        let url = URL(fileURLWithPath: path)
+        let data = try! Data(contentsOf: url)
+        print(data)
+        guard let plist = try! PropertyListSerialization.propertyList(
+            from: data,
+            options: .mutableContainers,
+            format: nil) as? [String: String] else {
+            return nil
+        }
+        var result = AuthConfig()
+        for (key, value) in plist {
+            if key == "clientID" {
+                result.clientID = value
+            } else if key == "clientSecret" {
+                result.clientSecret = value
+            }
+        }
+        return result
     }
     
     public var signInURL: URL? {
         let base = "https://accounts.spotify.com/authorize"
-        let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
+        let string = "\(base)?response_type=code&client_id=\(self.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
         
         return URL(string: string)
     }
     
     var isSignedIn: Bool {
-        return accessToken != nil
+        return false
+//        return accessToken != nil
     }
     
     private var accessToken: String? {
@@ -79,7 +117,7 @@ final class AuthManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let basicToken = Constants.clientID+":"+Constants.clientSecret
+        let basicToken = self.clientID+":"+self.clientSecret
         let tokenRepresentation = basicToken.data(using: .utf8)
         guard let tokenEncoded = tokenRepresentation?.base64EncodedString() else {
             print("Failure to get base64")
@@ -166,7 +204,7 @@ final class AuthManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let basicToken = Constants.clientID+":"+Constants.clientSecret
+        let basicToken = self.clientID+":"+self.clientSecret
         let tokenRepresentation = basicToken.data(using: .utf8)
         guard let tokenEncoded = tokenRepresentation?.base64EncodedString() else {
             print("Failure to get base64")
