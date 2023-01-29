@@ -12,6 +12,7 @@ import Foundation
 struct AuthConfig {
     var clientID: String?
     var clientSecret: String?
+    var redirectURI: String?
 }
 
 final class AuthManager {
@@ -20,20 +21,23 @@ final class AuthManager {
     private var refreshingToken = false
     private var clientID: String = ""
     private var clientSecret: String = ""
+    private var redirectURI: String = ""
 
     struct Constants {
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
-        static let redirectURI = "https://www.google.com/"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
     
     private init() {
         let configuration = getConfiguration()
-        guard let safeClientID = configuration?.clientID, let safeClientSecret = configuration?.clientSecret else {
+        guard let safeClientID = configuration?.clientID,
+              let safeClientSecret = configuration?.clientSecret,
+              let safeRedirectURI = configuration?.redirectURI else {
             return
         }
         self.clientID = safeClientID
         self.clientSecret = safeClientSecret
+        self.redirectURI = safeRedirectURI
     }
     
     private func getConfiguration() -> AuthConfig? {
@@ -54,6 +58,8 @@ final class AuthManager {
                 result.clientID = value
             } else if key == "clientSecret" {
                 result.clientSecret = value
+            } else if key == "redirectURI" {
+                result.redirectURI = value
             }
         }
         return result
@@ -61,7 +67,7 @@ final class AuthManager {
     
     public var signInURL: URL? {
         let base = "https://accounts.spotify.com/authorize"
-        let string = "\(base)?response_type=code&client_id=\(self.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
+        let string = "\(base)?response_type=code&client_id=\(self.clientID)&scope=\(Constants.scopes)&redirect_uri=\(self.redirectURI)&show_dialog=TRUE"
         
         return URL(string: string)
     }
@@ -107,7 +113,7 @@ final class AuthManager {
             URLQueryItem(name: "code",
                          value: code),
             URLQueryItem(name: "redirect_uri",
-                         value: Constants.redirectURI)
+                         value: self.redirectURI)
         ]
         
         var request = URLRequest(url: url)
