@@ -23,12 +23,11 @@ final class AuthManager {
 
     struct Constants {
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
-        static let redirectURI = "https://www.iosacademy.io/"
+        static let redirectURI = "https://www.google.com/"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
     
     private init() {
-        print("HELLO?")
         let configuration = getConfiguration()
         guard let safeClientID = configuration?.clientID, let safeClientSecret = configuration?.clientSecret else {
             return
@@ -41,10 +40,8 @@ final class AuthManager {
         guard let path = Bundle.main.path(forResource: "AuthConfiguration", ofType: "plist") else {
             return nil
         }
-        print(path)
         let url = URL(fileURLWithPath: path)
         let data = try! Data(contentsOf: url)
-        print(data)
         guard let plist = try! PropertyListSerialization.propertyList(
             from: data,
             options: .mutableContainers,
@@ -70,8 +67,7 @@ final class AuthManager {
     }
     
     var isSignedIn: Bool {
-        return false
-//        return accessToken != nil
+        return accessToken != nil
     }
     
     private var accessToken: String? {
