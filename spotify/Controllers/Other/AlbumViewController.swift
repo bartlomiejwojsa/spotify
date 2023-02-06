@@ -85,12 +85,16 @@ class AlbumViewController: UIViewController {
                 switch albumDetails {
                 case .success(let model):
                     print("playlist model: \(model.id)")
-                    self?.viewModels = model.tracks.items.compactMap({
-                        AlbumCollectionViewCellViewModel(
-                            name: $0.name,
-                            artistName: $0.artists.first?.name ?? "-"
-                        )
-                    })
+                    if let modelTracks = model.tracks {
+                        self?.viewModels = modelTracks.items.compactMap({
+                            AlbumCollectionViewCellViewModel(
+                                name: $0.name,
+                                artistName: $0.artists.first?.name ?? "-"
+                            )
+                        })
+                    } else {
+                        self?.viewModels = []
+                    }
                     self?.collectionView.reloadData()
                 case .failure(let error):
                     print(error)

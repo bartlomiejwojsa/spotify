@@ -77,7 +77,7 @@ class PlaylistViewController: UIViewController {
     }
     
     @objc private func didTapShare() {
-        guard let url = URL(string: playlist.external_urls["spotify"] as? String ?? "") else {
+        guard let url = URL(string: playlist.external_urls["spotify"] ?? "") else {
             return
         }
         let vc = UIActivityViewController(activityItems: [url],
