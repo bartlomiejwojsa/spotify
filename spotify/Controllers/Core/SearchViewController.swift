@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     let searchController: UISearchController = {
@@ -108,7 +109,11 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
         case .playlist(model: let model):
             vc = PlaylistViewController(playlist: model)
         case .artist(model: let model):
-            print(model)
+            guard let url = URL(string: model.external_urls["spotify"] ?? "") else {
+                return
+            }
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
         case .album(model: let model):
             vc = AlbumViewController(album: model)
         case .track(model: let model):
