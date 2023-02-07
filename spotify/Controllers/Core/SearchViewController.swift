@@ -117,7 +117,8 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
         case .album(model: let model):
             vc = AlbumViewController(album: model)
         case .track(model: let model):
-            vc = PlayerViewController(audio: model)
+            vc = PlayerViewController()
+            PlaybackPresenter.shared.startPlayback(from: self, track: model)
         }
         if let vcToShow = vc {
             vcToShow.navigationItem.largeTitleDisplayMode = .never

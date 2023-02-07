@@ -52,6 +52,7 @@ class PlaylistViewController: UIViewController {
     }
     
     private var viewModels = [RecommendedTrackCellViewModel]()
+    private var tracks = [AudioTrack]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ class PlaylistViewController: UIViewController {
                 switch playlistDetails {
                 case .success(let model):
                     print("playlist model: \(model.id)")
+                    self?.tracks = model.tracks.items.compactMap({ $0.track })
                     self?.viewModels = model.tracks.items.compactMap({
                         RecommendedTrackCellViewModel(
                             name: $0.track.name,
@@ -138,9 +140,9 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier,
-                for: indexPath) as? PlaylistHeaderCollectionReusableView,
+            ofKind: kind,
+            withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier,
+            for: indexPath) as? PlaylistHeaderCollectionReusableView,
               kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
@@ -156,8 +158,8 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("Playing song!",viewModels[indexPath.row].name)
-        //play song here !
+        let track = tracks[indexPath.row]
+        PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
 }
 
@@ -165,5 +167,9 @@ extension PlaylistViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
         // start playlist to play in queue
         print("Playing ALL ! :)")
+        PlaybackPresenter.shared.startPlayback(
+            from: self,
+            tracks: tracks
+        )
     }
 }
