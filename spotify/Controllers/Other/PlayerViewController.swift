@@ -13,6 +13,7 @@ protocol PlayerViewControllerDelegate: AnyObject {
     func didTapForward()
     func didTapBackward()
     func didSlideSlider(_ value: Float)
+    func didTapDismiss()
 }
 
 class PlayerViewController: UIViewController {
@@ -23,7 +24,7 @@ class PlayerViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .systemBlue
+//        imageView.backgroundColor = .systemBlue
         return imageView
     }()
     
@@ -64,6 +65,7 @@ class PlayerViewController: UIViewController {
     }
     
     private func configure() {
+        print("Reconfiguring ..")
         imageView.sd_setImage(with: playerDataSource?.imageURL)
         controlsView.configure(
             with: PlayerControlsViewViewModel(
@@ -76,10 +78,15 @@ class PlayerViewController: UIViewController {
     
     @objc private func didTapClose() {
         dismiss(animated: true)
+        delegate?.didTapDismiss()
     }
     
     @objc private func didTapAction() {
         dismiss(animated: true)
+    }
+    
+    func refreshUI() {
+        self.configure()
     }
 }
 
